@@ -1,6 +1,29 @@
 <template>
-	<div class="text">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error possimus eveniet voluptas est minima reiciendis natus vel sit necessitatibus veritatis voluptate dolores quis iusto nemo amet, eum vero ut ex.
+	<div>
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+			Entrada
+		</button>
+		<!-- Button salida -->
+		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+			Salida
+		</button>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<input-component></input-component>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
