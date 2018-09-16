@@ -26,16 +26,13 @@
     export default {
         data(){
             return {
-                 movements: [
-                    {'id': 1, 'fecha': 'vie 14 sep', 'movimiento': 'entrada', 'monto': 's/ 10.00'},
-                    {'id': 2, 'fecha': 'sab 15 sep', 'movimiento': 'salida', 'monto': 's/ 12.00'},
-                    {'id': 3, 'fecha': 'dom 16 sep', 'movimiento': 'entrada', 'monto': 's/ 8.00'},
-                    {'id': 4, 'fecha': 'dom 16 sep', 'movimiento': 'entrada', 'monto': 's/ 16.00'}
-                ],
+                 movements: [],
             }
         },
         mounted() {
-            console.log('Component mounted.')
+            axios.get('/movimientos').then((response) => {
+              this.movements = response.data;
+            });
         },
         methods : {
             addMovement(movement){

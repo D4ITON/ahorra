@@ -10,11 +10,11 @@ class Cuenta extends Model
 {
     public function user()
     {
-    	$this->belogsTo(User::class);
+    	return $this->belogsTo(User::class);
     }
 
     public function movimientos()
     {
-    	$this->hasMany(Movimiento::class);
+    	return $this->hasMany(Movimiento::class);
     }
 }

@@ -1,8 +1,8 @@
 <template>
 	<tr>
 		<td>{{ item.id }}</td>
-		<td>{{ item.fecha }}</td>
-		<td>{{ item.movimiento }}</td>
+		<td>{{ item.created_at }}</td>
+		<td>{{ item.tipo }}</td>
 		<td>{{ item.monto }}</td>
 	</tr>
 </template>

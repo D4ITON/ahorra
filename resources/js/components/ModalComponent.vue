@@ -2,13 +2,15 @@
 	<div>
 		<form action="" v-on:submit.prevent="newMovement()">
 			<!-- Button trigger modal -->
-			<button type="button" v-on:click="onClickEntrada()" id="entrada" value="1" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+
+			<button type="button" v-on:click="onClickEntrada()" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
 				Entrada
 			</button>
 			<!-- Button salida -->
-			<button type="button" v-on:click="onClickSalida()" id="salida" value="0" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+			<button type="button" v-on:click="onClickSalida()" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
 				Salida
 			</button>
+
 			<!-- Modal -->
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
@@ -37,7 +39,8 @@
 	export default{
 		data (){
 			return {
-				monto: ''
+				monto: '',
+				tipo: ''
 			};
 		},
 		mounted() {
@@ -46,26 +49,25 @@
         methods:{
         	newMovement(){
         		const params = {
-        			monto: this.monto
+        			monto: this.monto,
+        			tipo: this.tipo
         		};
-        		axios.post('/movimientos',params).then((response) => console.log(response));
-        		let movement = {
-        			id: 5,
-        			fecha: '15/09/2018', 
-        			movimiento: 'entrada', 
-        			monto: this.monto
-        		};
-        		this.$emit('new',movement);  //esta metodo envia una funcion new a su elemento padre
         		this.monto = '';
+        		
+        		axios.post('/movimientos',params)
+        			.then((response) => {
+        				const movement = response.data;
+        				this.$emit('new',movement);  //esta metodo envia una funcion new a su elemento padre
+        		});
         		$('#exampleModal').modal('hide');
         	},
         	onClickEntrada(){
         		$('#exampleModalLabel').text('Entrada');
-        		$('#entrada').attr('value','1');
+        		this.tipo = 1;
         	},
         	onClickSalida(){
         		$('#exampleModalLabel').text('Salida');
-        		$('#salida').attr('name','tipo');
+        		this.tipo = 0;
         	},
         }
 	}

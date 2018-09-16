@@ -21,7 +21,7 @@ class CreateMovimientosTable extends Migration
             // $table->foreign('cuenta_id')->references('id')->on('cuentas');
             $table->unsignedInteger('user_id');
             // $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamp('fecha_movimiento')->nullable();
+            // $table->timestamp('fecha_movimiento')->nullable();
             $table->timestamps();
         });
     }

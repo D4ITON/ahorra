@@ -32,11 +32,11 @@ class User extends Authenticatable
 
     public function cuenta()
     {
-        $this->hasOne(Cuenta::class);
+       return $this->hasOne(Cuenta::class);
     }
 
     public function movimientos()
     {
-        $this->hasMany(Movimiento::class);
+       return $this->hasMany(Movimiento::class);
     }
 }

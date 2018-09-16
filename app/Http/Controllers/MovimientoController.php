@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cuenta;
 use App\Movimiento;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,12 @@ class MovimientoController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
+        // dd($request->tipo);
+        $c = Cuenta::where('user_id',auth()->id())->get()->pluck('user_id')->first();
         $movimiento = new Movimiento();
-        $movimiento->tipo = '1';
+        $movimiento->tipo = $request->tipo;
         $movimiento->monto = $request->monto;
-        $movimiento->cuenta_id = '1'; // esto debe ser modificado
+        $movimiento->cuenta_id = $c; // esto debe ser modificado
         $movimiento->user_id = auth()->id();
         $movimiento->save();
 

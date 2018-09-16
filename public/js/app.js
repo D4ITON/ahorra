@@ -47359,11 +47359,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            movements: [{ 'id': 1, 'fecha': 'vie 14 sep', 'movimiento': 'entrada', 'monto': 's/ 10.00' }, { 'id': 2, 'fecha': 'sab 15 sep', 'movimiento': 'salida', 'monto': 's/ 12.00' }, { 'id': 3, 'fecha': 'dom 16 sep', 'movimiento': 'entrada', 'monto': 's/ 8.00' }, { 'id': 4, 'fecha': 'dom 16 sep', 'movimiento': 'entrada', 'monto': 's/ 16.00' }]
+            movements: []
         };
     },
     mounted: function mounted() {
-        console.log('Component mounted.');
+        var _this = this;
+
+        axios.get('/movimientos').then(function (response) {
+            _this.movements = response.data;
+        });
     },
 
     methods: {
@@ -47515,11 +47519,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      monto: ''
+      monto: '',
+      tipo: ''
     };
   },
   mounted: function mounted() {
@@ -47528,29 +47535,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     newMovement: function newMovement() {
+      var _this = this;
+
       var params = {
-        monto: this.monto
+        monto: this.monto,
+        tipo: this.tipo
       };
-      axios.post('/movimientos', params).then(function (response) {
-        return console.log(response);
-      });
-      var movement = {
-        id: 5,
-        fecha: '15/09/2018',
-        movimiento: 'entrada',
-        monto: this.monto
-      };
-      this.$emit('new', movement); //esta metodo envia una funcion new a su elemento padre
       this.monto = '';
+
+      axios.post('/movimientos', params).then(function (response) {
+        var movement = response.data;
+        _this.$emit('new', movement); //esta metodo envia una funcion new a su elemento padre
+      });
       $('#exampleModal').modal('hide');
     },
     onClickEntrada: function onClickEntrada() {
       $('#exampleModalLabel').text('Entrada');
-      $('#entrada').attr('value', '1');
+      this.tipo = 1;
     },
     onClickSalida: function onClickSalida() {
       $('#exampleModalLabel').text('Salida');
-      $('#salida').attr('name', 'tipo');
+      this.tipo = 0;
     }
   }
 });
@@ -47582,8 +47587,6 @@ var render = function() {
             staticClass: "btn btn-success",
             attrs: {
               type: "button",
-              id: "entrada",
-              value: "1",
               "data-toggle": "modal",
               "data-target": "#exampleModal"
             },
@@ -47602,8 +47605,6 @@ var render = function() {
             staticClass: "btn btn-danger",
             attrs: {
               type: "button",
-              id: "salida",
-              value: "0",
               "data-toggle": "modal",
               "data-target": "#exampleModal"
             },
@@ -47823,9 +47824,9 @@ var render = function() {
   return _c("tr", [
     _c("td", [_vm._v(_vm._s(_vm.item.id))]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.item.fecha))]),
+    _c("td", [_vm._v(_vm._s(_vm.item.created_at))]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.item.movimiento))]),
+    _c("td", [_vm._v(_vm._s(_vm.item.tipo))]),
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.item.monto))])
   ])
