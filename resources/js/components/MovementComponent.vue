@@ -12,7 +12,7 @@
           </thead>
           <tbody>
             <row-component 
-                v-for="item in movements"
+                v-for="item in orderedMovements"
                 :key="item.id"
                 :item="item">
             </row-component>
@@ -28,6 +28,11 @@
             return {
                  movements: [],
             }
+        },
+        computed: {
+          orderedMovements: function () {
+            return _.orderBy(this.movements, ['id'], ['desc'])
+          }
         },
         mounted() {
             axios.get('/movimientos').then((response) => {

@@ -10,7 +10,7 @@ class MovimientoController extends Controller
 {
     public function index()
     {
-        return Movimiento::where('user_id', auth()->id())->get();
+        return Movimiento::where('user_id', auth()->id())->orderBy('id','DESC')->get();
     }
 
     public function store(Request $request)
