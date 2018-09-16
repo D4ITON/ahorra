@@ -24,8 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $saldo = Cuenta::where('user_id', auth()->id())->get()->first()->saldo;
         // dd($cuenta);
-        return view('home',compact('saldo'));
+        return view('home');
+    }
+
+    public function saldo()
+    {
+        $saldo = Cuenta::where('user_id', auth()->id())->get()->first()->saldo;
+        return $saldo;
     }
 }

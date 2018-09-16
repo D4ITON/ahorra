@@ -13999,6 +13999,7 @@ __webpack_require__(14);
 
 window.Vue = __webpack_require__(37);
 
+Vue.component('home-component', __webpack_require__(186));
 Vue.component('movement-component', __webpack_require__(40));
 Vue.component('modal-component', __webpack_require__(43));
 Vue.component('row-component', __webpack_require__(46));
@@ -64488,6 +64489,158 @@ webpackContext.keys = function webpackContextKeys() {
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
 webpackContext.id = 178;
+
+/***/ }),
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(188)
+/* template */
+var __vue_template__ = __webpack_require__(187)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/HomeComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-782dcf83", Component.options)
+  } else {
+    hotAPI.reload("data-v-782dcf83", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card row" }, [
+    _c("div", { staticClass: "card-header text-center" }, [
+      _vm._v("GESTION DE DINERO")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [_vm._v("SEPTIEMBRE 2018")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 text-primary" }, [
+          _vm.saldo > 0
+            ? _c("div", { staticClass: "text-primary" }, [
+                _vm._v(
+                  "\n                    s/ " +
+                    _vm._s(_vm.saldo) +
+                    "\n                "
+                )
+              ])
+            : _c("div", { staticClass: "text-danger" }, [
+                _vm._v(
+                  "\n                    s/ " +
+                    _vm._s(_vm.saldo) +
+                    "\n            "
+                )
+              ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-footer" }, [_c("movement-component")], 1)
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-782dcf83", module.exports)
+  }
+}
+
+/***/ }),
+/* 188 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            saldo: ''
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/saldo').then(function (response) {
+            _this.saldo = response.data;
+        });
+    }
+});
 
 /***/ })
 /******/ ]);
