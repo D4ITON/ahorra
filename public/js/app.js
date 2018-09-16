@@ -47528,6 +47528,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     newMovement: function newMovement() {
+      var params = {
+        monto: this.monto
+      };
+      axios.post('/movimientos', params).then(function (response) {
+        return console.log(response);
+      });
       var movement = {
         id: 5,
         fecha: '15/09/2018',
@@ -47540,9 +47546,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     onClickEntrada: function onClickEntrada() {
       $('#exampleModalLabel').text('Entrada');
+      $('#entrada').attr('value', '1');
     },
     onClickSalida: function onClickSalida() {
       $('#exampleModalLabel').text('Salida');
+      $('#salida').attr('name', 'tipo');
     }
   }
 });
@@ -47574,6 +47582,7 @@ var render = function() {
             staticClass: "btn btn-success",
             attrs: {
               type: "button",
+              id: "entrada",
               value: "1",
               "data-toggle": "modal",
               "data-target": "#exampleModal"
@@ -47593,6 +47602,7 @@ var render = function() {
             staticClass: "btn btn-danger",
             attrs: {
               type: "button",
+              id: "salida",
               value: "0",
               "data-toggle": "modal",
               "data-target": "#exampleModal"
@@ -47624,21 +47634,7 @@ var render = function() {
               { staticClass: "modal-dialog", attrs: { role: "document" } },
               [
                 _c("div", { staticClass: "modal-content" }, [
-                  _c("div", { staticClass: "modal-header" }, [
-                    _c("h5", {
-                      staticClass: "modal-title",
-                      attrs: { id: "exampleModalLabel" },
-                      model: {
-                        value: _vm.tipoMovimiento,
-                        callback: function($$v) {
-                          _vm.tipoMovimiento = $$v
-                        },
-                        expression: "tipoMovimiento"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm._m(0)
-                  ]),
+                  _vm._m(0),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-body" }, [
                     _c("input", {
@@ -47679,18 +47675,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "modal",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", {
+        staticClass: "modal-title",
+        attrs: { id: "exampleModalLabel" }
+      }),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
   },
   function() {
     var _vm = this

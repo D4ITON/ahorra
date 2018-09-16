@@ -2,11 +2,11 @@
 	<div>
 		<form action="" v-on:submit.prevent="newMovement()">
 			<!-- Button trigger modal -->
-			<button type="button" value="1" v-on:click="onClickEntrada()" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+			<button type="button" v-on:click="onClickEntrada()" id="entrada" value="1" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
 				Entrada
 			</button>
 			<!-- Button salida -->
-			<button type="button" value="0" v-on:click="onClickSalida()" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+			<button type="button" v-on:click="onClickSalida()" id="salida" value="0" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
 				Salida
 			</button>
 			<!-- Modal -->
@@ -14,7 +14,7 @@
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel" v-model="tipoMovimiento"></h5>
+							<h5 class="modal-title" id="exampleModalLabel"></h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -45,6 +45,10 @@
         },
         methods:{
         	newMovement(){
+        		const params = {
+        			monto: this.monto
+        		};
+        		axios.post('/movimientos',params).then((response) => console.log(response));
         		let movement = {
         			id: 5,
         			fecha: '15/09/2018', 
@@ -57,9 +61,11 @@
         	},
         	onClickEntrada(){
         		$('#exampleModalLabel').text('Entrada');
+        		$('#entrada').attr('value','1');
         	},
         	onClickSalida(){
         		$('#exampleModalLabel').text('Salida');
+        		$('#salida').attr('name','tipo');
         	},
         }
 	}
