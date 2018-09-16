@@ -2,11 +2,11 @@
 	<div>
 		<form action="" v-on:submit.prevent="newMovement()">
 			<!-- Button trigger modal -->
-			<button type="button" value="input" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+			<button type="button" value="1" v-on:click="onClickEntrada()" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
 				Entrada
 			</button>
 			<!-- Button salida -->
-			<button type="button" value="output" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+			<button type="button" value="0" v-on:click="onClickSalida()" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
 				Salida
 			</button>
 			<!-- Modal -->
@@ -14,7 +14,7 @@
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">titulo</h5>
+							<h5 class="modal-title" id="exampleModalLabel" v-model="tipoMovimiento"></h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -52,7 +52,15 @@
         			monto: this.monto
         		};
         		this.$emit('new',movement);  //esta metodo envia una funcion new a su elemento padre
-        	}
+        		this.monto = '';
+        		$('#exampleModal').modal('hide');
+        	},
+        	onClickEntrada(){
+        		$('#exampleModalLabel').text('Entrada');
+        	},
+        	onClickSalida(){
+        		$('#exampleModalLabel').text('Salida');
+        	},
         }
 	}
 </script>

@@ -47535,6 +47535,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         monto: this.monto
       };
       this.$emit('new', movement); //esta metodo envia una funcion new a su elemento padre
+      this.monto = '';
+      $('#exampleModal').modal('hide');
+    },
+    onClickEntrada: function onClickEntrada() {
+      $('#exampleModalLabel').text('Entrada');
+    },
+    onClickSalida: function onClickSalida() {
+      $('#exampleModalLabel').text('Salida');
     }
   }
 });
@@ -47566,9 +47574,14 @@ var render = function() {
             staticClass: "btn btn-success",
             attrs: {
               type: "button",
-              value: "input",
+              value: "1",
               "data-toggle": "modal",
               "data-target": "#exampleModal"
+            },
+            on: {
+              click: function($event) {
+                _vm.onClickEntrada()
+              }
             }
           },
           [_vm._v("\n\t\t\tEntrada\n\t\t")]
@@ -47580,9 +47593,14 @@ var render = function() {
             staticClass: "btn btn-danger",
             attrs: {
               type: "button",
-              value: "output",
+              value: "0",
               "data-toggle": "modal",
               "data-target": "#exampleModal"
+            },
+            on: {
+              click: function($event) {
+                _vm.onClickSalida()
+              }
             }
           },
           [_vm._v("\n\t\t\tSalida\n\t\t")]
@@ -47606,7 +47624,21 @@ var render = function() {
               { staticClass: "modal-dialog", attrs: { role: "document" } },
               [
                 _c("div", { staticClass: "modal-content" }, [
-                  _vm._m(0),
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c("h5", {
+                      staticClass: "modal-title",
+                      attrs: { id: "exampleModalLabel" },
+                      model: {
+                        value: _vm.tipoMovimiento,
+                        callback: function($$v) {
+                          _vm.tipoMovimiento = $$v
+                        },
+                        expression: "tipoMovimiento"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(0)
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-body" }, [
                     _c("input", {
@@ -47647,26 +47679,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("titulo")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   },
   function() {
     var _vm = this
