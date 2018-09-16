@@ -15,7 +15,7 @@
                     @endif
                     <div class="row">
                             <div class="col-md-6">SEPTIEMBRE 2018</div>
-                            <div class="col-md-6">S/ 103.10</div>
+                            <div class="col-md-6 text-primary">{{ $saldo }}</div>
                     </div>
                     {{-- MODAL INICIO --}}
                         

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cuenta;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $saldo = Cuenta::where('user_id', auth()->id())->get()->first()->saldo;
+        // dd($cuenta);
+        return view('home',compact('saldo'));
     }
 }

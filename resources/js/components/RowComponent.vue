@@ -3,13 +3,14 @@
 		<td>{{ item.id }}</td>
 		<td>{{ item.created_at | moment }}</td>
 		<div>
-			<td v-if="item.tipo == 1">entrada</td>
-			<td v-else>salida</td>
+			<td v-if="item.tipo == 1" class="text-success text-center">entrada</td>
+			<td v-else class="text-danger text-center">salida</td>
 		</div>
 		<td>S/ {{ item.monto }}</td>
 	</tr>
 </template>
 
+</style>
 <script>
 	var moment = require('moment');
 	export default {

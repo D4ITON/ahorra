@@ -47798,6 +47798,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 var _moment = __webpack_require__(54);
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47831,8 +47832,12 @@ var render = function() {
     _vm._v(" "),
     _c("div", [
       _vm.item.tipo == 1
-        ? _c("td", [_vm._v("entrada")])
-        : _c("td", [_vm._v("salida")])
+        ? _c("td", { staticClass: "text-success text-center" }, [
+            _vm._v("entrada")
+          ])
+        : _c("td", { staticClass: "text-danger text-center" }, [
+            _vm._v("salida")
+          ])
     ]),
     _vm._v(" "),
     _c("td", [_vm._v("S/ " + _vm._s(_vm.item.monto))])
