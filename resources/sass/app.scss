@@ -8,6 +8,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+#app{
+	font-family: Nunito,Arial,sans-serif;
+}
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -21,4 +24,33 @@
 .classSalida {
 	color: red;
 	background-color: red;
+}
+.label {
+    letter-spacing: 0.05em;
+    border-radius: 60px;
+    padding: 4px 12px 3px;
+    font-weight: 500;
+}
+.label {
+    /*display: inline;*/
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    /*line-height: 1;*/
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+.label-rouded, .label-rounded {
+    border-radius: 60px;
+    padding: 4px 12px 3px;
+    font-weight: 500;
+}
+.label-success {
+    background-color: #53e69d;
+}
+.label-danger {
+    background-color: #ff7676;
 }

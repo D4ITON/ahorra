@@ -3,8 +3,8 @@
 		<td>{{ item.id }}</td>
 		<td>{{ item.created_at | moment }}</td>
 		<div>
-			<td v-if="item.tipo == 1" class="text-success text-center">entrada</td>
-			<td v-else class="text-danger text-center">salida</td>
+			<td v-if="item.tipo == 1" class="label label-rouded label-success">entrada</td>
+			<td v-else class="label label-rouded label-danger">salida</td>
 		</div>
 		<td>S/ {{ item.monto }}</td>
 	</tr>
@@ -21,7 +21,7 @@
 		},
 		filters: {
 		  moment: function (date) {
-		    return moment(date).format('DD MMMM');
+		    return moment(date).format('DD MMM, hh:mm a');
 		  }
 		},
 		mounted() {

@@ -64341,7 +64341,7 @@ var _moment = __webpack_require__(0);
 
 	filters: {
 		moment: function moment(date) {
-			return _moment(date).format('DD MMMM');
+			return _moment(date).format('DD MMM, hh:mm a');
 		}
 	},
 	mounted: function mounted() {
@@ -64632,10 +64632,10 @@ var render = function() {
     _vm._v(" "),
     _c("div", [
       _vm.item.tipo == 1
-        ? _c("td", { staticClass: "text-success text-center" }, [
+        ? _c("td", { staticClass: "label label-rouded label-success" }, [
             _vm._v("entrada")
           ])
-        : _c("td", { staticClass: "text-danger text-center" }, [
+        : _c("td", { staticClass: "label label-rouded label-danger" }, [
             _vm._v("salida")
           ])
     ]),
