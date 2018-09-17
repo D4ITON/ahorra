@@ -16,26 +16,14 @@ class MovimientoController extends Controller
     public function store(Request $request)
     {
         // dd($request->tipo);
-        $saldo = Cuenta::where('user_id', auth()->id())->get()->first()->saldo;
-
         $c = Cuenta::where('user_id',auth()->id())->get()->pluck('user_id')->first();
+
         $movimiento = new Movimiento();
         $movimiento->tipo = $request->tipo;
         $movimiento->monto = $request->monto;
         $movimiento->cuenta_id = $c; // esto debe ser modificado
         $movimiento->user_id = auth()->id();
         $movimiento->save();
-
-        if ($request->tipo == 1) {
-            Cuenta::where('user_id', auth()->id())->update([
-                'saldo' => $saldo + $request->monto,
-            ]);
-        }
-        else{
-            Cuenta::where('user_id', auth()->id())->update([
-                'saldo' => $saldo - $request->monto,
-            ]);
-        }
 
         return $movimiento;
     }

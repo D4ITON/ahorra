@@ -56,9 +56,19 @@
         		
         		axios.post('/movimientos',params)
         			.then((response) => {
+        				console.log(response);
         				const movement = response.data;
         				this.$emit('new',movement);  //esta metodo envia una funcion new a su elemento padre
         		});
+        		// prueba de datos a store cuenta
+
+        		axios.post('/cuentas', params).then((response) => {
+        			console.log(response);
+        			const saldo = response.data;
+        			this.$emit('salUpdate',saldo); // enviamos el valor del saldo al padre
+        		});
+        		// fin de prueba
+
         		$('#exampleModal').modal('hide');
         	},
         	onClickEntrada(){

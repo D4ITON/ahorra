@@ -27,10 +27,4 @@ class HomeController extends Controller
         // dd($cuenta);
         return view('home');
     }
-
-    public function saldo()
-    {
-        $saldo = Cuenta::where('user_id', auth()->id())->get()->first()->saldo;
-        return $saldo;
-    }
 }

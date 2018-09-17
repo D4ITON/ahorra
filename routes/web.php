@@ -8,6 +8,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('saldo', 'HomeController@saldo');
 
-Route::apiResource('movimientos', 'MovimientoController')->middleware('auth');;
+Route::apiResource('movimientos', 'MovimientoController')->middleware('auth');
+
+Route::apiResource('cuentas', 'CuentaController')->middleware('auth');

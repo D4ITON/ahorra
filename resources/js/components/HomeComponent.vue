@@ -18,7 +18,7 @@
         </div>
         <div class="card-footer">
 
-            <movement-component></movement-component>
+            <movement-component @saldoUpdate="saldoUpdated"></movement-component>
 
         </div>
     </div>
@@ -28,13 +28,19 @@
     export default {
         data(){
             return {
-                saldo: ''
+                saldo: '',
             };
         },
         mounted() {
-            axios.get('/saldo').then((response) => {
+            axios.get('/cuentas').then((response) => {
+              console.log(response);
               this.saldo = response.data;
             });
         },
+        methods:{
+            saldoUpdated(saldo){
+                this.saldo = saldo.saldoUpdated;
+            }
+        }
     }
 </script>

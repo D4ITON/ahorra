@@ -1,6 +1,6 @@
 <template>
     <div>
-        <modal-component @new="addMovement"></modal-component>
+        <modal-component @new="addMovement" @salUpdate="saldoUpdate"></modal-component>
         <table class="table table-sm">
           <thead>
             <tr>
@@ -27,6 +27,7 @@
         data(){
             return {
                  movements: [],
+                 saldo:''
             }
         },
         computed: {
@@ -42,6 +43,9 @@
         methods : {
             addMovement(movement){
                 this.movements.push(movement);
+            },
+            saldoUpdate(saldo){
+              this.$emit('saldoUpdate',saldo);
             }
         }
     }
