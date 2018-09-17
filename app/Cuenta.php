@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cuenta extends Model
 {
+    protected $fillable = [
+        'saldo', 'user_id',
+    ];
+
     public function user()
     {
     	return $this->belogsTo(User::class);

@@ -15,9 +15,15 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
+        /*evento que se ejecuta luego de el registro de un nuevo usuario para crear su respectiva cuenta, ya que la relación de uno a uno*/
+        UserWasRegistered::class => [
+            CreateNewCuentaToUserCreated::class,
         ],
+        //lo de arriba crea en la misma carpeta providers
+        'App\Events\UserWasRegistered' => [
+            'App\Listeners\CreateNewCuentaToUserCreated',
+        ],
+
     ];
 
     /**
